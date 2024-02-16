@@ -45,4 +45,5 @@ class SearchFlightsResult(BaseDriver):
 
     def get_search_results_from_filters(self):
         return self.wait_for_presence_of_all_elements(By.XPATH,self.FILTER_BY_STOP_OPTION)
+
     
