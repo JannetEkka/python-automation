@@ -1,4 +1,4 @@
-
+import datetime
 import inspect
 import softest
 import logging
@@ -33,6 +33,7 @@ class Utils(softest.TestCase):
         wb = load_workbook(filename=file_name)
         sh = wb[sheet]
         row_ct = sh.max_row
+        print(row_ct)
         col_ct = sh.max_column
 
         if row_ct < 2 or col_ct < 1:
@@ -41,7 +42,10 @@ class Utils(softest.TestCase):
         for i in range(2, row_ct + 1):
             row = []
             for j in range(1, col_ct + 1):
-                row.append(sh.cell(row=i, column=j).value)
+                if j==3:
+                    row.append(sh.cell(row=i, column=j).value.strftime('%d/%m/%Y'))
+                else:
+                    row.append(sh.cell(row=i, column=j).value)
             datalist.append(row)
         return datalist
     # def read_data_from_csv():

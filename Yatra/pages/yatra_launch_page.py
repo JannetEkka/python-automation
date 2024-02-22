@@ -5,6 +5,7 @@ import time
 from base.base_driver import BaseDriver
 from pages.search_flights_results_page import SearchFlightsResult
 from utilities.utils import Utils
+from selenium.webdriver.common.action_chains import ActionChains
 
 class LaunchPage(BaseDriver):
 
@@ -38,7 +39,7 @@ class LaunchPage(BaseDriver):
         return self.wait_until_element_is_clickable(By.XPATH,self.DEPART_DATE)
     
     def getAllDates(self):
-        return self.wait_for_presence_of_all_elements(By.XPATH,self.ALL_DEPART_DATES)
+        return self.wait_until_element_is_clickable(By.XPATH,self.ALL_DEPART_DATES)
     
     #actions on locator
     def enterDepartFromField(self, departlocation):
@@ -67,17 +68,40 @@ class LaunchPage(BaseDriver):
                 break
 
     def selectDepartureDate(self,departure_date):
-        time.sleep(2)
         self.getDepartDateField().click()
-        self.log.info('Departure Date field is clicked')
-        departure_dates = self.getAllDates()
-        departure_dates_list = [date.get_attribute('data-date') for date in departure_dates if date.get_attribute('data-date')]
-
-        for date_element, date in zip(departure_dates, departure_dates_list):
-            if date == departure_date:
-                date_element.click()
-                self.log('date requested is found and clicked')
+        self.log.info('Departure Date field is clicked. Calendar pop-up opened.')
+        all_dates=self.getAllDates().find_elements(By.XPATH,self.ALL_DEPART_DATES)
+        self.log.info('All dates are found and present')
+        for date in all_dates:
+            if date.get_attribute('data-date')==departure_date:
+                date.click()
+                self.log.info('date selected is clicked')
                 break
+
+        # time.sleep(2)
+        # date_field = self.getDepartDateField()
+        # date_field.click()
+        # self.log.info('Departure Date field is clicked')
+
+        # self.page_scroll()
+
+        # departure_dates = self.getAllDates()
+        # self.log.info('All dates are present')
+        # departure_dates_list = [date.get_attribute('data-date') for date in departure_dates if date.get_attribute('data-date')]
+        # self.log.info('Got all departure dates in our list and they dont have null values')
+
+        # for date_element, date in zip(departure_dates, departure_dates_list):
+        #     # self.log.debug('print departure date',departure_date,date,type(departure_date))
+        #     if date == departure_date:
+        #         # self.log.info('print departure date',departure_date)
+        #         # self.wait_until_element_is_clickable(date_element)
+        #         # actions = ActionChains(self.driver)
+        #         # actions.move_to_element(date_element).perform()
+        #         # self.log.info('Scrolled to the dep date within the calendar popup')
+        #         # self.driver.execute_script("window.scrollBy(0,document.body.scrollHeight));")
+        #         self.driver.execute_script("arguments[0].scrollIntoView().click();", date)
+        #         self.log.info('date requested is found and clicked')
+        #         break
 
     def searchFlights(self,departlocation,goingtolocation,departure_date):
         self.enterDepartFromField(departlocation)

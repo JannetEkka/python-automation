@@ -9,7 +9,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 driver = None
 
 @pytest.fixture(autouse=True)
-def setup(request,browser):
+def setup(request,browser,url):
     global driver
     if browser == 'chrome':
         print('Launching Chrome')
@@ -20,19 +20,23 @@ def setup(request,browser):
     elif browser == 'edge':
         print('Launching Edge')
         driver = webdriver.Edge()
-    request.cls.driver = driver
-    driver.get("https://www.yatra.com/")
+    driver.get(url)
     driver.maximize_window()
-    
+    request.cls.driver = driver
     yield
     driver.close()
 
 def pytest_addoption(parser):
     parser.addoption("--browser")
+    parser.addoption("--url")
 
 @pytest.fixture(scope="class",autouse=True)
 def browser(request):
     return request.config.getoption("--browser")
+
+@pytest.fixture(scope="class",autouse=True)
+def url(request):
+    return request.config.getoption("--url")
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):

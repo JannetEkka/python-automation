@@ -1,0 +1,21 @@
+22/02/2024 04:04:01 PM - INFO - TestYatraDemo : 8
+22/02/2024 04:04:53 PM - INFO - TestYatraDemo : 37
+ - INFO - LaunchPage : Entered Location
+22/02/2024 04:03:22 PM - INFO - LaunchPage : Searched for Location
+22/02/2024 04:03:24 PM - INFO - LaunchPage : Clicked on Going To Location
+22/02/2024 04:03:26 PM - INFO - LaunchPage : Searched for Location
+22/02/2024 04:03:29 PM - INFO - LaunchPage : Clicked on Going To Location
+22/02/2024 04:03:31 PM - INFO - LaunchPage : Departure Date field is clicked. Calendar pop-up opened.
+22/02/2024 04:03:32 PM - INFO - LaunchPage : All dates are found and present
+22/02/2024 04:03:32 PM - INFO - LaunchPage : date selected is clicked
+22/02/2024 04:03:37 PM - INFO - LaunchPage : clicked search flights button
+22/02/2024 04:04:09 PM - INFO - LaunchPage : Clicked on Departure From Location
+22/02/2024 04:04:12 PM - INFO - LaunchPage : Entered Location
+22/02/2024 04:04:14 PM - INFO - LaunchPage : Searched for Location
+22/02/2024 04:04:16 PM - INFO - LaunchPage : Clicked on Going To Location
+22/02/2024 04:04:18 PM - INFO - LaunchPage : Searched for Location
+22/02/2024 04:04:21 PM - INFO - LaunchPage : Clicked on Going To Location
+22/02/2024 04:04:23 PM - INFO - LaunchPage : Departure Date field is clicked. Calendar pop-up opened.
+22/02/2024 04:04:24 PM - INFO - LaunchPage : All dates are found and present
+22/02/2024 04:04:24 PM - INFO - LaunchPage : date selected is clicked
+22/02/2024 04:04:28 PM - INFO - LaunchPage : clicked search flights button

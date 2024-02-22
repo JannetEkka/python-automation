@@ -30,15 +30,15 @@ class SearchFlightsResult(BaseDriver):
     def filter_flights_by_stop(self,by_stop):
         if by_stop == "1 Stop":
             self.getFilterBy1().click()
-            self.log.warning('Selected Flights with 1 Stop')
+            self.log.info('Selected Flights with 1 Stop')
             time.sleep(3)
         elif by_stop == "2 Stop(s)":
             self.getFilterBy2().click()
-            self.log.warning('Selected Flights with 2 Stops')
+            self.log.info('Selected Flights with 2 Stops')
             time.sleep(3)
         elif by_stop == "Non Stop":
             self.getFilterBy0().click()
-            self.log.warning('Selected Flights with Non Stop')
+            self.log.info('Selected Flights with Non Stop')
             time.sleep(3)
         else:
             self.log.warning('Please provide valid filter option')
